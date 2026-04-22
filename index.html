@@ -53,6 +53,29 @@
         </div>
 
         <div role="main" class="ui-content">
+            <h3>Add New User</h3>
+            <form id="addUserForm">
+                <div class="ui-field-contain">
+                    <label for="newUserName">Name:</label>
+                    <input type="text" name="newUserName" id="newUserName" placeholder="Enter name..." required>
+                </div>
+                <div class="ui-field-contain">
+                    <label for="newUserEmail">Email:</label>
+                    <input type="email" name="newUserEmail" id="newUserEmail" placeholder="Enter email..." required>
+                </div>
+                <div class="ui-field-contain">
+                    <label for="newUserRole">Role:</label>
+                    <select name="newUserRole" id="newUserRole">
+                        <option value="User">User</option>
+                        <option value="Admin">Admin</option>
+                        <option value="Editor">Editor</option>
+                    </select>
+                </div>
+                <button type="submit" class="ui-btn ui-btn-b ui-corner-all">Add User</button>
+            </form>
+
+            <hr>
+
             <h3>Fetched Data</h3>
             <p>This data is fetched from the Express Backend API.</p>
             <ul data-role="listview" data-inset="true" id="userList">
@@ -156,11 +179,10 @@
     </div>
 
     <script>
-        // Fetch data when the users page is initialized
-        $(document).on("pagecreate", "#usersPage", function() {
-            // Note: Change this URL to your Render deployment URL later!
-            const backendUrl = " https://wad-4b.onrender.com";
-            
+        // Note: Change this URL to your Render deployment URL later!
+        const backendUrl = "https://wad-4b.onrender.com/api/users";
+
+        function fetchUsers() {
             $.ajax({
                 url: backendUrl,
                 method: "GET",
@@ -187,6 +209,39 @@
                     $list.append('<li><p style="color:red;">Failed to load users. Ensure backend is running.</p></li>');
                     $list.listview("refresh");
                 }
+            });
+        }
+
+        // Fetch data when the users page is initialized
+        $(document).on("pagecreate", "#usersPage", function() {
+            fetchUsers();
+
+            // Handle Add User Form Submission
+            $("#addUserForm").submit(function(e) {
+                e.preventDefault();
+                const name = $("#newUserName").val();
+                const email = $("#newUserEmail").val();
+                const role = $("#newUserRole").val();
+
+                $.ajax({
+                    url: backendUrl,
+                    method: "POST",
+                    contentType: "application/json",
+                    data: JSON.stringify({ name, email, role }),
+                    success: function() {
+                        // Clear the form
+                        $("#newUserName").val('');
+                        $("#newUserEmail").val('');
+                        $("#newUserRole").val('User').selectmenu('refresh');
+                        
+                        // Re-fetch users to show the new data!
+                        fetchUsers();
+                    },
+                    error: function(err) {
+                        alert("Error adding user! Check backend.");
+                        console.error(err);
+                    }
+                });
             });
         });
     </script>

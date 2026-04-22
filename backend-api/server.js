@@ -19,6 +19,22 @@ app.get('/api/users', (req, res) => {
   res.json(users);
 });
 
+// POST: Add a new user
+app.post('/api/users', (req, res) => {
+  const { name, email, role } = req.body;
+  if (!name || !email) {
+    return res.status(400).json({ error: 'Name and email are required' });
+  }
+  const newUser = {
+    id: users.length + 1,
+    name,
+    email,
+    role: role || 'User'
+  };
+  users.push(newUser);
+  res.status(201).json(newUser);
+});
+
 // GET: Health check endpoint (useful for Render)
 app.get('/', (req, res) => {
   res.send('Backend API is running successfully!');
