@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>jQuery Mobile App</title>
+    <!-- jQuery Mobile CSS -->
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css" />
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <!-- jQuery Mobile JS -->
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+</head>
+<body>
+
+    <!-- Page 1: Home -->
+    <div data-role="page" id="home">
+        <div data-role="header" data-position="fixed" data-theme="b">
+            <h1>Home</h1>
+        </div>
+
+        <div role="main" class="ui-content">
+            <h2>Welcome!</h2>
+            <p>This is a simple demonstration of a multi-page mobile website built with jQuery Mobile.</p>
+            <p>jQuery Mobile automatically handles AJAX-based navigation between these internal pages for smooth transitions.</p>
+            
+            <ul data-role="listview" data-inset="true">
+                <li data-role="list-divider">Navigation</li>
+                <li><a href="#usersPage">View Backend Users</a></li>
+                <li><a href="#formPage">View Form Widgets</a></li>
+                <li><a href="#aboutPage">About This App</a></li>
+            </ul>
+        </div>
+
+        <div data-role="footer" data-position="fixed" data-theme="b">
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="#home" class="ui-btn-active ui-state-persist" data-icon="home">Home</a></li>
+                    <li><a href="#usersPage" data-icon="user">Users</a></li>
+                    <li><a href="#formPage" data-icon="edit">Form</a></li>
+                    <li><a href="#aboutPage" data-icon="info">About</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 2: Users (Backend Fetch) -->
+    <div data-role="page" id="usersPage">
+        <div data-role="header" data-add-back-btn="true" data-theme="b">
+            <h1>Backend Users</h1>
+        </div>
+
+        <div role="main" class="ui-content">
+            <h3>Fetched Data</h3>
+            <p>This data is fetched from the Express Backend API.</p>
+            <ul data-role="listview" data-inset="true" id="userList">
+                <li>Loading users...</li>
+            </ul>
+        </div>
+
+        <div data-role="footer" data-position="fixed" data-theme="b">
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="#home" data-icon="home">Home</a></li>
+                    <li><a href="#usersPage" class="ui-btn-active ui-state-persist" data-icon="user">Users</a></li>
+                    <li><a href="#formPage" data-icon="edit">Form</a></li>
+                    <li><a href="#aboutPage" data-icon="info">About</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 3: Form Widgets -->
+    <div data-role="page" id="formPage">
+        <div data-role="header" data-add-back-btn="true" data-theme="b">
+            <h1>Form Widgets</h1>
+        </div>
+
+        <div role="main" class="ui-content">
+            <h3>Interactive Widgets</h3>
+            <form action="#" method="get">
+                <div class="ui-field-contain">
+                    <label for="name">Text Input:</label>
+                    <input type="text" name="name" id="name" value="" placeholder="Enter your name...">
+                </div>
+
+                <div class="ui-field-contain">
+                    <label for="switch">Flip Switch:</label>
+                    <select name="switch" id="switch" data-role="slider">
+                        <option value="off">Off</option>
+                        <option value="on">On</option>
+                    </select>
+                </div>
+
+                <div class="ui-field-contain">
+                    <label for="slider">Slider:</label>
+                    <input type="range" name="slider" id="slider" value="50" min="0" max="100" data-highlight="true">
+                </div>
+                
+                <div class="ui-field-contain">
+                    <fieldset data-role="controlgroup">
+                        <legend>Checkboxes:</legend>
+                        <input type="checkbox" name="checkbox-1" id="checkbox-1">
+                        <label for="checkbox-1">Option 1</label>
+                        <input type="checkbox" name="checkbox-2" id="checkbox-2">
+                        <label for="checkbox-2">Option 2</label>
+                    </fieldset>
+                </div>
+
+                <input type="button" value="Submit Form" data-theme="b">
+            </form>
+        </div>
+
+        <div data-role="footer" data-position="fixed" data-theme="b">
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="#home" data-icon="home">Home</a></li>
+                    <li><a href="#usersPage" data-icon="user">Users</a></li>
+                    <li><a href="#formPage" class="ui-btn-active ui-state-persist" data-icon="edit">Form</a></li>
+                    <li><a href="#aboutPage" data-icon="info">About</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 3: About -->
+    <div data-role="page" id="aboutPage">
+        <div data-role="header" data-add-back-btn="true" data-theme="b">
+            <h1>About</h1>
+        </div>
+
+        <div role="main" class="ui-content">
+            <h3>Project Details</h3>
+            <p>This web application successfully implements:</p>
+            <ul>
+                <li><strong>Viewport Meta Tag:</strong> Ensures correct scaling on mobile devices.</li>
+                <li><strong>Multi-page Template:</strong> Multiple <code>data-role="page"</code> elements within a single HTML document.</li>
+                <li><strong>AJAX Navigation:</strong> Links between pages are automatically handled via AJAX by jQuery Mobile.</li>
+                <li><strong>Widgets:</strong> Includes form widgets like flip switches, sliders, checkboxes, and text inputs.</li>
+                <li><strong>Navbar:</strong> Persistent bottom navigation bar using <code>data-role="navbar"</code>.</li>
+            </ul>
+        </div>
+
+        <div data-role="footer" data-position="fixed" data-theme="b">
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="#home" data-icon="home">Home</a></li>
+                    <li><a href="#usersPage" data-icon="user">Users</a></li>
+                    <li><a href="#formPage" data-icon="edit">Form</a></li>
+                    <li><a href="#aboutPage" class="ui-btn-active ui-state-persist" data-icon="info">About</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Fetch data when the users page is initialized
+        $(document).on("pagecreate", "#usersPage", function() {
+            // Note: Change this URL to your Render deployment URL later!
+            const backendUrl = "http://localhost:5000/api/users";
+            
+            $.ajax({
+                url: backendUrl,
+                method: "GET",
+                success: function(data) {
+                    const $list = $("#userList");
+                    $list.empty();
+                    if (data && data.length > 0) {
+                        data.forEach(user => {
+                            $list.append(`<li>
+                                <h2>${user.name}</h2>
+                                <p>${user.email}</p>
+                                <p class="ui-li-aside"><strong>${user.role}</strong></p>
+                            </li>`);
+                        });
+                    } else {
+                        $list.append('<li>No users found.</li>');
+                    }
+                    $list.listview("refresh");
+                },
+                error: function(err) {
+                    console.error("Error fetching users:", err);
+                    const $list = $("#userList");
+                    $list.empty();
+                    $list.append('<li><p style="color:red;">Failed to load users. Ensure backend is running.</p></li>');
+                    $list.listview("refresh");
+                }
+            });
+        });
+    </script>
+</body>
+</html>

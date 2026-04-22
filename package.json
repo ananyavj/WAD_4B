@@ -1,0 +1,12 @@
+{
+  "name": "wad_4a_jquery_mobile",
+  "version": "1.0.0",
+  "description": "jQuery Mobile App deployment on AWS Elastic Beanstalk",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.22.1"
+  }
+}

@@ -1,0 +1,22 @@
+/* Custom styles for our jQuery Mobile App */
+
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Add some padding to the main content area */
+.ui-content {
+    padding: 1em;
+}
+
+/* Custom styling for the listview */
+.ui-listview > li h3 {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+/* Enhancing the form submit button margin */
+form input[type="button"] {
+    margin-top: 1.5em;
+}
